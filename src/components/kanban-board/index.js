@@ -21,6 +21,10 @@ export default class KanbanBoard extends Component {
     this.stagesNames = ['Backlog', 'To Do', 'Ongoing', 'Done'];
   }
 
+  componentDidMount(){
+    console.log()
+  }
+
   moveToForward = (task) => {
     const stateCopy = [...this.state.tasks];
     const [_, index] = task.name.split(" ");
@@ -82,10 +86,10 @@ export default class KanbanBoard extends Component {
                         <div className="li-content layout-row justify-content-between align-items-center">
                           <span data-testid={`${task.name.split(' ').join('-')}-name`}>{task.name}</span>
                           <div className="icons">
-                            <button disabled={task.stage === 0} onClick={() => this.moveToBack(task)} className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-back`}>
+                            <button disabled={task.stage === Math.min(this.state.tasks[0].stage)} onClick={() => this.moveToBack(task)} className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-back`}>
                               <i className="material-icons">arrow_back</i>
                             </button>
-                            <button disabled={task.stage === 3} onClick={() => this.moveToForward(task)} className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-forward`}>
+                            <button disabled={task.stage === Math.max(this.state.tasks[this.state.tasks.length-1].stage)} onClick={() => this.moveToForward(task)} className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-forward`}>
                               <i className="material-icons">arrow_forward</i>
                             </button>
                           </div>
