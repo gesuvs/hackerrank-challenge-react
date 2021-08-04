@@ -24,6 +24,11 @@ export default class KanbanBoard extends Component {
       stagesTasks[stageId].push(task);
     }
 
+    const changePosition = ()=> {
+      alert("aqui")
+      
+    }
+
     return (
       <div className="mt-20 layout-column justify-content-center align-items-center">
         <div className="mt-50 layout-row">
@@ -38,7 +43,7 @@ export default class KanbanBoard extends Component {
                                       <div className="li-content layout-row justify-content-between align-items-center">
                                         <span data-testid={`${task.name.split(' ').join('-')}-name`}>{task.name}</span>
                                         <div className="icons">
-                                          <button className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-back`}>
+                                          <button onClick={()=> changePosition()} className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-back`}>
                                             <i className="material-icons">arrow_back</i>
                                           </button>
                                           <button className="icon-only x-small mx-2" data-testid={`${task.name.split(' ').join('-')}-forward`}>
